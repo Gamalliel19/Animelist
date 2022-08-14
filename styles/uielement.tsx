@@ -1,8 +1,10 @@
 import styled from '@emotion/styled';
 
 export const Container = styled.main`
-  max-width: 1280px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const AnimeCard = styled.div`
@@ -11,7 +13,7 @@ export const AnimeCard = styled.div`
   gap: 20px;
   align-items: center;
   justify-content: center;
-  padding: 16px;
+  padding: 16px 16px 32px;
   background: #ffffff;
   border: 2px solid #000000;
   border-radius: 12px;
@@ -41,4 +43,11 @@ export const AnimeType = styled.span`
   height: 31px;
   border: 1px solid #4d4d4d;
   border-radius: 4px;
+`;
+
+// LIST STYLE
+export const ListAnimeCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 `;

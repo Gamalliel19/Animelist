@@ -20,7 +20,7 @@ export const ANIME__LIST = gql`
           large
         }
         duration
-        bannerImage
+        favourites
         type
         countryOfOrigin
       }
@@ -40,8 +40,10 @@ export const ANIME__DETAIL = gql`
         large
       }
       duration
+      favourites
+      type
+      countryOfOrigin
       seasonYear
-      averageScore
       genres
       description
       characters {
@@ -51,13 +53,9 @@ export const ANIME__DETAIL = gql`
             first
             middle
             last
-            full
-            native
-            userPreferred
           }
           image {
             large
-            medium
           }
         }
       }
