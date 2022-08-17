@@ -46,6 +46,7 @@ export const ANIME__DETAIL = gql`
       seasonYear
       genres
       description
+      bannerImage
       characters {
         nodes {
           id

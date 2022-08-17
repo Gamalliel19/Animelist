@@ -17,6 +17,7 @@ export interface AnimeDetail extends Anime {
   seasonYear: number;
   genres: string;
   description: string;
+  bannerImage: string;
   characters: {
     nodes: {
       id: number;
