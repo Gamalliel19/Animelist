@@ -7,15 +7,14 @@ export interface Anime {
   coverImage: {
     large: string;
   };
-  duration: string;
   favourites: number;
-  type: string;
-  countryOfOrigin: string;
+  averageScore: number;
+  isAdult: boolean;
 }
 
 export interface AnimeDetail extends Anime {
   seasonYear: number;
-  genres: string;
+  genres: string[];
   description: string;
   bannerImage: string;
   characters: {

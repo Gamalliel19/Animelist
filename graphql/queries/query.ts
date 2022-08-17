@@ -19,10 +19,9 @@ export const ANIME__LIST = gql`
         coverImage {
           large
         }
-        duration
         favourites
-        type
-        countryOfOrigin
+        averageScore
+        isAdult
       }
     }
   }
@@ -47,6 +46,9 @@ export const ANIME__DETAIL = gql`
       genres
       description
       bannerImage
+      averageScore
+      genres
+      isAdult
       characters {
         nodes {
           id

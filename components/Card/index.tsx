@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Anime } from '../../models';
-import { AnimeCard, AnimeTitle, AnimeType, AnimeTypeList } from './index.style';
+import { AnimeCard, AnimeTitle, CardInfo, CardInfoNumber } from './index.style';
 
 type Props = {
   data: Anime;
@@ -15,18 +15,19 @@ const Card = ({ data }: Props) => {
           className='card-image'
           src={data.coverImage.large}
           alt={data.title.english}
-          width='200'
-          height='200'
+          width='94'
+          height='112'
         />
         <div>
-          <AnimeTypeList>
-            <AnimeType>{data.type}</AnimeType>
-            <AnimeType>{data.countryOfOrigin}</AnimeType>
-          </AnimeTypeList>
           <AnimeTitle>
             {data.title.english ? data.title.native : 'Default Title'}
           </AnimeTitle>
-          <p>Favorites : {data.favourites}</p>
+          <CardInfo>
+            Ratings: <CardInfoNumber>{data.averageScore}</CardInfoNumber>
+          </CardInfo>
+          <CardInfo>
+            Favorites: <CardInfoNumber>{data.favourites}</CardInfoNumber>
+          </CardInfo>
         </div>
       </AnimeCard>
     </Link>

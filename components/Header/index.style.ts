@@ -6,7 +6,7 @@ export const Navbar = styled.header`
   height: 70px;
   align-items: center;
   justify-content: space-between;
-  background-color: #f5f5f5;
+  margin-bottom: 32px;
 `;
 
 export const Links = styled.div`

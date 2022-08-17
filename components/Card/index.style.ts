@@ -5,39 +5,42 @@ export const AnimeCard = styled.div`
   flex-direction: row;
   gap: 20px;
   align-items: center;
-  padding: 16px 16px;
+  padding: 24px 20px;
   background: #ffffff;
-  border: 2px solid #000000;
-  border-radius: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.25);
   cursor: pointer;
-`;
-
-export const AppImage = styled.img`
-  width: 250px;
-  height: 250px;
-  background: #ffffff;
-  box-shadow: 12px 12px 0px #81adc8;
-  border-radius: 12px;
 `;
 
 export const AnimeTitle = styled.h3`
   font-family: 'Montserrat Alternates';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 22px;
-  line-height: 140%;
-  letter-spacing: -0.02em;
-  color: #000000;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: -0.015em;
+  color: #222222;
 `;
 
 export const AnimeType = styled.span`
   padding: 6px 12px;
   border: 1px solid #4d4d4d;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 12px;
 `;
 
 export const AnimeTypeList = styled.div`
   display: flex;
   gap: 10px;
+`;
+
+export const CardInfo = styled.p`
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 19px;
+  color: #3e3e3e;
+`;
+
+export const CardInfoNumber = styled.span`
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 18px;
 `;
