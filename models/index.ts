@@ -18,17 +18,19 @@ export interface AnimeDetail extends Anime {
   description: string;
   bannerImage: string;
   characters: {
-    nodes: {
-      id: number;
-      name: {
-        first: string;
-        middle?: string;
-        last?: string;
-      };
-      image: {
-        large: string;
-      };
-    };
+    nodes: [
+      {
+        id: number;
+        name: {
+          first: string;
+          middle?: string;
+          last?: string;
+        };
+        image: {
+          large: string;
+        };
+      }
+    ];
   };
 }
 
