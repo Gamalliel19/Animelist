@@ -4,6 +4,7 @@ import { NextRouter, useRouter } from 'next/router';
 import CharacterList from '../components/CharactersList';
 import DetailBox from '../components/DetailBox';
 import HeroDetail from '../components/HeroDetail';
+import Loading from '../components/Loading';
 import { ANIME__DETAIL } from '../graphql/queries/query';
 import { AnimeDetail } from '../models/index';
 
@@ -16,7 +17,7 @@ const DetailPage: NextPage = () => {
     },
   });
 
-  if (loading) return <h1>Loading...</h1>;
+  if (loading) return <Loading />;
   if (error) return <h1>Error</h1>;
   const newData: AnimeDetail = data?.Media;
   console.log(newData);

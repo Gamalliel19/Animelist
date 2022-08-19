@@ -1,13 +1,39 @@
-import type { GetStaticProps, NextPage } from 'next';
+import type { NextPage } from 'next';
 import Head from 'next/head';
 import { Container } from '../styles/uielement';
 import Header from '../components/Header';
-import client from '../graphql/apolloClient';
 import { ANIME__LIST } from '../graphql/queries/query';
-import { Anime } from '../models';
 import ListCard from '../modules/ListCard';
+import { useState } from 'react';
+import { useQuery } from '@apollo/client';
+import Loading from '../components/Loading';
+const Home: NextPage = () => {
+  const [variables, setVariables] = useState<{ page: number; perPage: number }>(
+    {
+      page: 1,
+      perPage: 10,
+    }
+  );
+  const { data, loading, error } = useQuery(ANIME__LIST, { variables });
 
-const Home: NextPage<{ anime: Anime[] }> = ({ anime }) => {
+  const anime = data?.Page.media;
+  const pages = data?.Page.pageInfo;
+
+  if (error) return <h1>Error</h1>;
+  if (loading) return <Loading />;
+
+  const onPreviousPageClick = () => {
+    if (variables.page > 1) {
+      setVariables({ page: variables.page - 1, perPage: 10 });
+      return variables;
+    }
+    return alert('You are in the first page!');
+  };
+
+  const onNextPageClick = () => {
+    setVariables({ page: variables.page + 1, perPage: 10 });
+  };
+
   return (
     <div>
       <Head>
@@ -18,24 +44,40 @@ const Home: NextPage<{ anime: Anime[] }> = ({ anime }) => {
       <Header />
       <Container>
         <ListCard animes={anime} />
+        <button onClick={onPreviousPageClick}>Previous Page</button>
+        <span>
+          Page: {variables.page} of {pages.total} pages
+        </span>
+        <button onClick={onNextPageClick}>Next Page</button>
       </Container>
     </div>
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await client.query({
-    query: ANIME__LIST,
-    variables: {
-      page: 1,
-      perPage: 10,
-    },
-  });
-  return {
-    props: {
-      anime: data.Page.media,
-    },
-  };
-};
-
 export default Home;
+// import type { GetStaticProps, NextPage } from 'next';
+// import client from '../graphql/apolloClient';
+// import { Anime, PageInfo } from '../models';
+
+// const Home: NextPage<{ anime: Anime[]; pages: PageInfo }> = ({
+//   anime,
+//   pages,
+// })
+
+// const [page, setPage] = useState(1);
+
+// export const getStaticProps: GetStaticProps = async () => {
+//   const { data } = await client.query({
+//     query: ANIME__LIST,
+//     variables: {
+//       page: 1,
+//       perPage: 10,
+//     },
+//   });
+//   return {
+//     props: {
+//       anime: data.Page.media,
+//       pages: data.Page.pageInfo,
+//     },
+//   };
+// };

@@ -1,13 +1,13 @@
 import { NextPage } from 'next';
-import { Links, Navbar } from './index.style';
+import { Links, Logo, Navbar, NavLinks } from './index.style';
 
 const Header: NextPage = () => {
   return (
     <Navbar>
-      <h1>Anime List</h1>
+      <Logo>Anime List</Logo>
       <Links>
-        <p>COLLECTION</p>
-        <p>REPOSITORY</p>
+        <NavLinks>COLLECTION</NavLinks>
+        <NavLinks>REPOSITORY</NavLinks>
       </Links>
     </Navbar>
   );
