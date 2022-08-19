@@ -26,6 +26,10 @@ const Home: NextPage<{ anime: Anime[] }> = ({ anime }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = await client.query({
     query: ANIME__LIST,
+    variables: {
+      page: 1,
+      perPage: 10,
+    },
   });
   return {
     props: {

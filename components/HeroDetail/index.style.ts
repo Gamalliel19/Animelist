@@ -67,7 +67,6 @@ export const BackDrop = styled.div`
   mix-blend-mode: multiply;
   height: 100%;
   width: 100%;
-  opacity: 0.65;
   top: 0;
   left: 0;
 `;
