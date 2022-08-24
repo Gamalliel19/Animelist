@@ -20,6 +20,7 @@ Welcome to the anime list repository, this repository was built for learning by 
 - [x] For each anime, show info at least the anime title and anime cover/banner.
 - [x] Each anime item are clickable, and will redirect to Anime Detail page when clicked.
 - [x] Anime List page should have pagination functionality.
+- [ ] Bug: Page reset to 1 if press back button
 
 ## Anime Detail Page
 

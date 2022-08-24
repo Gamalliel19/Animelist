@@ -6,7 +6,7 @@ const Header: NextPage = () => {
     <Navbar>
       <Logo>Anime List</Logo>
       <Links>
-        <NavLinks>COLLECTION</NavLinks>
+        <NavLinks href='/Collection'>COLLECTION</NavLinks>
         <NavLinks>REPOSITORY</NavLinks>
       </Links>
     </Navbar>

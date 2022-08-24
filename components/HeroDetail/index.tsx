@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
+import { NextRouter, useRouter } from 'next/router';
 import { AnimeDetail } from '../../models/index';
 import {
   Hero,
@@ -14,7 +14,7 @@ import {
 } from './index.style';
 
 const HeroDetail: NextPage<{ data: AnimeDetail }> = ({ data }) => {
-  const router = useRouter();
+  const router: NextRouter = useRouter();
   return (
     <Hero>
       <BackDrop>
