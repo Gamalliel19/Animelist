@@ -1,30 +1,43 @@
+import React, { useContext, useState, useEffect } from 'react';
+import { NextPage } from 'next';
 import { NextRouter, useRouter } from 'next/router';
-import React, { useContext, useEffect, useState } from 'react';
-import { AnimeDetail } from '../models';
+import { addCollectiopn } from '../state/actions';
 import Context from '../state/Context';
 
-const Collection = () => {
-  const [state] = useContext(Context.AppContext);
-  const [collection, setCollection] = useState<number>(0);
+const Collection: NextPage = () => {
+  const [inputValue, setInputValue] = useState<string>('');
   const router: NextRouter = useRouter();
-
-  console.log(state.collections);
-  const listCollections = state.collections;
+  const [state, dispatch] = useContext(Context.AppContext);
+  const collections = state.collectionNames;
 
   useEffect(() => {
-    setCollection(state.collections.length);
-  }, []);
+    dispatch(addCollectiopn(inputValue));
+  }, [dispatch, inputValue]);
+
+  if (!collections) return null;
 
   return (
     <div>
-      <button onClick={() => router.back()}>back</button>
+      <button onClick={() => router.back()}>Back</button>
       <h1>Collection</h1>
-      <p>You have {collection} in collections</p>
-
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          dispatch(addCollectiopn(inputValue));
+          setInputValue('');
+        }}
+      >
+        <input
+          type='text'
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
+        <button type='submit'>Add Collection</button>
+      </form>
       <nav>
-        {listCollections.map((coll: AnimeDetail, i: number) => (
+        {collections.map((collection: any, i: number) => (
           <ul key={i}>
-            <li>{coll.title.english ?? coll.title.native}</li>
+            <li>{collection ?? ''}</li>
           </ul>
         ))}
       </nav>
